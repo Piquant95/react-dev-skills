@@ -1,33 +1,35 @@
+import {useState} from "react";
 import './App.css';
+import SkillList from "./SkillList";
+import NewSkillForm from "./NewSkillForm";
+
 
 function App() {
+  
+  const [skills, setSkills] = useState([
+    { name: "HTML", level: 5 },
+    { name: "CSS", level: 3 },
+    { name: "JavaScript", level: 4 },
+    { name: "Python", level: 2 },
+  ]);
+
+  function handleAddSkill(skill) {
+    const newArray = [...skills, skill]
+    setSkills(newArray);
+    console.log(skills)
+  }
+
+  const [showSkills, setShowSkills] = useState(true);
+
+  console.log(skills)
   return (
-    <div>
-      <h1>React Dev Skills</h1>
-      <ul>
-        <li>SkillListItem</li>
-        <li>SkillListItem</li>
-        <li>SkillListItem</li>
-      </ul>
+    <div className="App">
+      <h1>React Dev Skills </h1>
+      <SkillList skills={skills} />
       <hr />
-      <div className='NewSkillForm'>
-            <form>
-                <label for="input">Skill: </label>
-                <input type="text" id="input" name="input" />
-
-                <label for="select">Add:</label>
-                <select id="select" name="select">
-                    <option value="">Select:</option>
-                    <option value="option1">1</option>
-                    <option value="option2">2</option>
-                    <option value="option3">3</option>
-                </select>
-
-                <button type="submit">Add Skill</button>
-            </form>
-        </div>
+      <NewSkillForm />
     </div>
   );
-} 
+}
 
 export default App;
