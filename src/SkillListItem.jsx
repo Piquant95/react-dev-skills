@@ -6,11 +6,10 @@ import "./SkillListItem.css"
 function SkillListItem(props) {
   const {name, level} = props.skill
   return (
-    <div className="SkillListItem">
-      <li>{name}</li>
-      <li>{level}</li>
-
-    </div>
+    <li className="SkillListItem">
+        <div>{name}</div>
+        <div>Level: {level}</div>
+      </li>
   );
 }
 
