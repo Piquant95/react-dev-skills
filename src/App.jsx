@@ -27,7 +27,7 @@ function App() {
       <h1>React Dev Skills </h1>
       <SkillList skills={skills} />
       <hr />
-      <NewSkillForm />
+      <NewSkillForm handleAddSkill={handleAddSkill} />
     </div>
   );
 }
