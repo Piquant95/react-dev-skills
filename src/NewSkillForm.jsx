@@ -1,25 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./NewSkillForm.css";
 
-function NewSkillForm() {
-    const [newSKill, setNewSkill] = useState({name: '', level: 3})
+function NewSkillForm({handleAddSkill}) {
+    const [newSkill, setNewSkill] = useState({name: '', level: 3})
 
     
-  const handleNameChange = (event) => {
-    setNewSkill({ ...newSKill, name: event.target.value });
+  function handleNameChange(event) {
+    setNewSkill({ ...newSkill, name: event.target.value });
   };
 
-  const handleLevelChange = (event) => {
+  function handleLevelChange(event) {
     setNewSkill({ ...newSkill, level: parseInt(event.target.value) });
   };
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
-    // Pass the form state up to the parent component
-    // via a callback function passed in as a prop
-    this.props.onSubmit(newSkill);
-    // Clear the form
-    setNewSkill({ name: '', level: 3 });
+    handleAddSkill(newSkill);
+    setNewSkill({ name: "", level: 3 });
   };
 
   return (
@@ -31,13 +28,13 @@ function NewSkillForm() {
             type="text"
             id="input"
             name="input"
-            value={formState.name}
+            value={newSkill.name}
             onChange={handleNameChange}
           />
         </div>
         <div className='LevelOption'>
           <label htmlFor="select">Level: </label>
-            <select id="select" name="select" value={formState.level} onChange={handleLevelChange}>
+            <select id="select" name="select" value={newSkill.level} onChange={handleLevelChange}>
                 <option value=""></option>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
