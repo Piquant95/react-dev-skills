@@ -19,7 +19,7 @@ function App() {
     console.log(skills)
   }
 
-  const [showSkills, setShowSkills] = useState(true);
+  // const [showSkills, setShowSkills] = useState(true);
 
   console.log(skills)
   return (
